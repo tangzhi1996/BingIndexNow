@@ -4,7 +4,7 @@
  * 
  * @package BingIndexNow
  * @author FluffyOx,瓜瓜
- * @version 1.0.0
+ * @version 1.0.1
  * @link https://github.com/fluffyox/Typecho_BingIndexNow
  */
 class BingIndexNow_Plugin implements Typecho_Plugin_Interface
