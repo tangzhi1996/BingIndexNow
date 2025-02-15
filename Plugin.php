@@ -47,8 +47,15 @@ class BingIndexNow_Plugin implements Typecho_Plugin_Interface
 
     public static function personalConfig(Typecho_Widget_Helper_Form $form) {}
 
-    public static function submitToBingIndex( $class)
+    public static function submitToBingIndex($content,$classa) 
     {
+
+
+        //如果文章属性为隐藏则返回不执行
+		if( 'publish' != $contents['visibility']){
+            return;
+        }
+        // 获取配置
         $options = Typecho_Widget::widget('Widget_Options');
         $apiKey = $options->plugin('BingIndexNow')->apiKey;
         $host = $options->plugin('BingIndexNow')->host;
@@ -57,7 +64,6 @@ class BingIndexNow_Plugin implements Typecho_Plugin_Interface
         // 验证选项是否存在
         if (empty($apiKey) || empty($host) || empty($keyLocation)) {
             return _t('Bing IndexNow 插件选项配置不正确。');
-            return;
         }
 
         // 地址拼接
@@ -69,7 +75,6 @@ class BingIndexNow_Plugin implements Typecho_Plugin_Interface
         $post = Typecho_Widget::widget('Widget_Contents_Post_Edit');
         if (!$post->have()) {
             return _t('获取文章信息以提交到 Bing IndexNow 失败。');
-            return;
         }
 
         $cid = $post->cid;
@@ -87,7 +92,6 @@ class BingIndexNow_Plugin implements Typecho_Plugin_Interface
         // 检查 JSON 编码是否失败
         if ($jsonData === false) {
             return _t('将请求数据编码为 JSON 以提交到 Bing IndexNow 失败。');
-            return;
         }
     
         $headers = array(
