@@ -47,7 +47,7 @@ class BingIndexNow_Plugin implements Typecho_Plugin_Interface
 
     public static function personalConfig(Typecho_Widget_Helper_Form $form) {}
 
-    public static function submitToBingIndex($content,$classa) 
+    public static function submitToBingIndex($contents,$classa) 
     {
 
 
